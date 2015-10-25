@@ -6,6 +6,7 @@ import asciiPanel.AsciiPanel;
 
 public class MainApplet extends Applet
 {
+	private static final long serialVersionUID = 1L;
 	private AsciiPanel terminal;
 	
 	public MainApplet()
