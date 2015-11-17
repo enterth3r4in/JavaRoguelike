@@ -16,5 +16,21 @@ public class Tile
 		this.doesBlock = doesBlock;
 	}
 	
-	public static final Tile tileGrass = new Tile('.', Color.GREEN, false);
+	public char getGlyph()
+	{
+		return glyph;
+	}
+	
+	public Color getColor()
+	{
+		return color;
+	}
+	
+	public boolean blocks()
+	{
+		return doesBlock;
+	}
+	
+	public static final Tile GRASS = new Tile('.', Color.GREEN, false);
+	public static final Tile BOUNDS = new Tile('X', Color.BLACK, true);
 }
