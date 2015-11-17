@@ -14,11 +14,11 @@ public class ScreenMainMenu implements Screen
 		terminal.write("Subtitle", 9, 8);
 		terminal.write("PhrasePhrasePhrase", 13, 12);
 		
-		terminal.write("New Game", 15, 30);
-		terminal.write("Load Game", 15, 33);
-		terminal.write("Options", 15, 36);
-		terminal.write("Credits", 15, 39);
-		terminal.write("Exit Game", 15, 42);
+		terminal.write("N - New Game", 11, 30);
+		terminal.write("L - Load Game", 11, 33);
+		terminal.write("O - Options", 11, 36);
+		terminal.write("C - Credits", 11, 39);
+		terminal.write("E - Exit Game", 11, 42);
 		
 	}
 
@@ -27,8 +27,16 @@ public class ScreenMainMenu implements Screen
 	{
 		switch(event.getKeyCode())
 		{
-		case KeyEvent.VK_R:
-			return this;
+//		case KeyEvent.VK_N:
+//			return new ScreenNewGame();
+//		case KeyEvent.VK_L:
+//			return new ScreenLoadGame();
+//		case KeyEvent.VK_O:
+//			return new ScreenOptions();
+//		case KeyEvent.VK_C:
+//			return new ScreenCredits();
+		case KeyEvent.VK_E:
+			return new ScreenConfirmExit(this);
 		default:
 			return this;
 		}
