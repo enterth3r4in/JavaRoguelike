@@ -5,9 +5,10 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
-import asciiPanel.AsciiPanel;
 import net.ccgames.rl.screen.Screen;
 import net.ccgames.rl.screen.ScreenAlpha;
+import net.ccgames.rl.screen.ScreenMainMenu;
+import asciiPanel.AsciiPanel;
 
 public class MainApplication extends JFrame implements KeyListener
 {
@@ -16,13 +17,20 @@ public class MainApplication extends JFrame implements KeyListener
 	private AsciiPanel terminal;
 	private Screen screen;
 	
+	private boolean debug = java.lang.management.ManagementFactory.
+			getRuntimeMXBean().getInputArguments().toString().
+			indexOf("jdwp") >= 0;
+	
 	public MainApplication()
 	{
 		super();
 		terminal = new AsciiPanel(120, 50);
 		add(terminal);
 		pack();
-		screen = new ScreenAlpha();
+		if(debug)
+			screen = new ScreenMainMenu();
+		else
+			screen = new ScreenAlpha();
 		addKeyListener(this);
 		repaint();
 	}
