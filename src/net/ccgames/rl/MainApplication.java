@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import net.ccgames.rl.screen.Screen;
 import net.ccgames.rl.screen.ScreenAlpha;
 import net.ccgames.rl.screen.ScreenMainMenu;
+import net.ccgames.rl.screen.ScreenPlay;
 import asciiPanel.AsciiPanel;
 
 public class MainApplication extends JFrame implements KeyListener
@@ -28,7 +29,7 @@ public class MainApplication extends JFrame implements KeyListener
 		add(terminal);
 		pack();
 		if(debug)
-			screen = new ScreenMainMenu();
+			screen = new ScreenPlay();
 		else
 			screen = new ScreenAlpha();
 		addKeyListener(this);

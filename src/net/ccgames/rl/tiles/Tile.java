@@ -2,6 +2,8 @@ package net.ccgames.rl.tiles;
 
 import java.awt.Color;
 
+import net.ccgames.rl.refs.Colors;
+
 public class Tile
 {
 	private int x, y;
@@ -31,6 +33,7 @@ public class Tile
 		return doesBlock;
 	}
 	
-	public static final Tile GRASS = new Tile('.', Color.GREEN, false);
+	public static final Tile GRASS = new Tile('.', Colors.GRASS, false);
+	public static final Tile TREE = new Tile('^', Colors.TREE, true);
 	public static final Tile BOUNDS = new Tile('X', Color.BLACK, true);
 }
