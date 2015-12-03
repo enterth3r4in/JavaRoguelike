@@ -13,7 +13,7 @@ public class ScreenPlay implements Screen
 	public ScreenPlay()
 	{
 		WorldBuilder builder = new WorldBuilder(80, 30);
-		toDisplay = builder.randomizeTiles().addRandomTrees(100).build();
+		toDisplay = builder.randomizeTiles().addRandomTrees(10).build();
 	}
 	
 	@Override

@@ -1,5 +1,7 @@
 package net.ccgames.rl.world;
 
+import java.util.Random;
+
 import net.ccgames.rl.tiles.Tile;
 
 public class WorldBuilder
@@ -36,21 +38,11 @@ public class WorldBuilder
 		Tile[][] tiles2 = tiles;
 		int currentTreeCount = 0;
 		
+		
 		while(currentTreeCount <= trees)
 		{
-			for(int x = 0; x < tiles2.length; x++)
-			{
-				for(int y = 0; y < tiles2[0].length; y++)
-				{
-					if(Math.random() < 0.2)
-					{
-						tiles2[x][y] = Tile.TREE;
-					}
-				}
-			}
-//			tiles = tiles2;
+			
 		}
-		tiles = tiles2;
 		return this;
 	}
 }
