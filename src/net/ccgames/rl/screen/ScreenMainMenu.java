@@ -19,6 +19,7 @@ public class ScreenMainMenu implements Screen
 		terminal.write("O - Options", 11, 36);
 		terminal.write("C - Credits", 11, 39);
 		terminal.write("E - Exit Game", 11, 42);
+		terminal.write("P - Debug to play mode", 90, 49);
 		
 	}
 
@@ -27,6 +28,8 @@ public class ScreenMainMenu implements Screen
 	{
 		switch(event.getKeyCode())
 		{
+		case KeyEvent.VK_P:
+			return new ScreenPlay();
 //		case KeyEvent.VK_N:
 //			return new ScreenNewGame();
 //		case KeyEvent.VK_L:

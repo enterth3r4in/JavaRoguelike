@@ -34,6 +34,7 @@ public class Tile
 	}
 	
 	public static final Tile GRASS = new Tile('.', Colors.GRASS, false);
+	public static final Tile DIRT = new Tile('.', Colors.DIRT, false);
 	public static final Tile TREE = new Tile('^', Colors.TREE, true);
 	public static final Tile BOUNDS = new Tile('X', Color.BLACK, true);
 }

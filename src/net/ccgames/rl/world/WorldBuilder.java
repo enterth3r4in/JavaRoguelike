@@ -22,7 +22,10 @@ public class WorldBuilder
 		{
 			for(int y = 0; y < tiles[0].length; y++)
 			{
-				tiles[x][y] = Tile.GRASS;
+				if(Math.random() < 0.5)
+					tiles[x][y] = Tile.GRASS;
+				else
+					tiles[x][y] = Tile.DIRT;
 			}
 		}
 		return this;
@@ -45,8 +48,9 @@ public class WorldBuilder
 					}
 				}
 			}
-			tiles = tiles2;
+//			tiles = tiles2;
 		}
+		tiles = tiles2;
 		return this;
 	}
 }

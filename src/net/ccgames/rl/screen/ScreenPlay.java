@@ -12,7 +12,7 @@ public class ScreenPlay implements Screen
 	
 	public ScreenPlay()
 	{
-		WorldBuilder builder = new WorldBuilder(50, 50);
+		WorldBuilder builder = new WorldBuilder(80, 30);
 		toDisplay = builder.randomizeTiles().addRandomTrees(100).build();
 	}
 	
@@ -29,7 +29,7 @@ public class ScreenPlay implements Screen
 		{
 			for(int y = 0; y < toDisplay.getHeight(); y++)
 			{
-				terminal.write(toDisplay.getTileAtCoordinates(x, y).getGlyph(), x, y);
+				terminal.write(toDisplay.getTileAtCoordinates(x, y).getGlyph(), x, y, toDisplay.getTileAtCoordinates(x, y).getColor());
 			}
 		}
 	}
