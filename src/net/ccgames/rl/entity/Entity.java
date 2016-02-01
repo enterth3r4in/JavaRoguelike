@@ -1,9 +1,12 @@
 package net.ccgames.rl.entity;
 
+import java.awt.Color;
+
 public class Entity
 {
 	private int x, y;
 	private char glyph;
+	private Color color;
 	
 	/**
 	 * Default constructor
@@ -18,12 +21,14 @@ public class Entity
 	 * @param initialX - Starting x position of entity, can be modified
 	 * @param initialY - Starting y position of entity, can be modified
 	 * @param glyph - semi-permanent glyph of entity
+	 * @param color - color used to display the glyph
 	 */
-	public Entity(int initialX, int initialY, char glyph)
+	public Entity(int initialX, int initialY, char glyph, Color color)
 	{
 		this.x = initialX;
 		this.y = initialY;
 		this.glyph = glyph;
+		this.color = color;
 	}
 	
 	/**
@@ -61,5 +66,10 @@ public class Entity
 	public char getEntityGlyph()
 	{
 		return glyph;
+	}
+	
+	public Color getEntityColor()
+	{
+		return color;
 	}
 }
