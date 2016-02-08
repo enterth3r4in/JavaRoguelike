@@ -1,5 +1,9 @@
 package net.ccgames.rl.factories;
 
+import java.util.Random;
+
+import net.ccgames.rl.ai.EntityAI;
+import net.ccgames.rl.ai.WolfAI;
 import net.ccgames.rl.entity.Entity;
 import net.ccgames.rl.entity.EntityWolf;
 import net.ccgames.rl.refs.Colors;
@@ -20,10 +24,12 @@ public class EntityFactory
 	{
 		for(int i = 0; i < wolvesToSpawn; i++)
 		{
-			int spawnX = Refs.randomNumberInRange(0, Refs.INIT_WORLD_WIDTH);
-			int spawnY = Refs.randomNumberInRange(0, Refs.INIT_WORLD_HEIGHT);
+			Random random = new Random(System.nanoTime());
+			int spawnX = random.nextInt(Refs.INIT_WORLD_WIDTH);
+			int spawnY = random.nextInt(Refs.INIT_WORLD_HEIGHT);
 			Entity wolf = new EntityWolf(spawnX, spawnY, Refs.WOLF_GLYPH, Colors.WOLF, "WOLF", world);
 			ScreenPlay.addEntityToList(wolf);
+			wolf.addAI(new EntityAI());
 		}
 	}
 }

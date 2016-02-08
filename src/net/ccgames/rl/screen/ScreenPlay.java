@@ -27,8 +27,11 @@ public class ScreenPlay implements Screen
 	{
 		WorldBuilder builder = new WorldBuilder(Refs.INIT_WORLD_WIDTH, Refs.INIT_WORLD_HEIGHT);
 		toDisplay = builder.randomizeTiles().addRandomTrees(10).build();
+		
 		player = new EntityPlayer(10, 10, toDisplay);
 		factory = new EntityFactory(toDisplay);
+		
+		generateAllEntities();
 	}
 	
 	public void generateAllEntities()
@@ -38,6 +41,7 @@ public class ScreenPlay implements Screen
 	
 	public static void addEntityToList(Entity e)
 	{
+		System.out.println("Adding");
 		entities.add(e);
 	}
 	
@@ -48,7 +52,7 @@ public class ScreenPlay implements Screen
 	public void displayOutput(AsciiPanel terminal)
 	{
 		displayWorld(terminal);
-		displayEntities(terminal);
+		updateAndDisplayEntities(terminal);
 	}
 	
 	/**
@@ -71,11 +75,13 @@ public class ScreenPlay implements Screen
 	 * Displays the player separately
 	 * @param terminal - Needed to be able to draw
 	 */
-	private void displayEntities(AsciiPanel terminal)
+	private void updateAndDisplayEntities(AsciiPanel terminal)
 	{
 		terminal.write(player.getEntityGlyph(), player.getEntityXPosition(), player.getEntityYPosition(), player.getEntityColor());
+		System.out.println(entities.size());
 		for(Entity e : entities)
 		{
+			e.updateAI();
 			terminal.write(e.getEntityGlyph(), e.getEntityXPosition(), e.getEntityYPosition(), e.getEntityColor());
 		}
 	}

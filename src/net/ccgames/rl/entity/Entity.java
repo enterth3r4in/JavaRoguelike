@@ -2,6 +2,7 @@ package net.ccgames.rl.entity;
 
 import java.awt.Color;
 
+import net.ccgames.rl.ai.EntityAI;
 import net.ccgames.rl.refs.Refs;
 import net.ccgames.rl.world.World;
 
@@ -17,6 +18,7 @@ public class Entity
 	private Color color;
 	private String internalName;
 	private World world;
+	private EntityAI ai;
 	
 	/**
 	 * Constructor initialization of x,y,glyph
@@ -33,6 +35,16 @@ public class Entity
 		this.color = color;
 		this.internalName = internalName;
 		this.world = world;
+	}
+	
+	public void addAI(EntityAI ai)
+	{
+		this.ai = ai;
+	}
+	
+	public void updateAI()
+	{
+		ai.update(this);
 	}
 	
 	/**
