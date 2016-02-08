@@ -1,7 +1,5 @@
 package net.ccgames.rl.world;
 
-import java.util.Random;
-
 import net.ccgames.rl.tiles.Tile;
 
 public class WorldBuilder

@@ -5,9 +5,9 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
+import net.ccgames.rl.refs.Refs;
 import net.ccgames.rl.screen.Screen;
 import net.ccgames.rl.screen.ScreenAlpha;
-import net.ccgames.rl.screen.ScreenMainMenu;
 import net.ccgames.rl.screen.ScreenPlay;
 import asciiPanel.AsciiPanel;
 
@@ -25,7 +25,7 @@ public class MainApplication extends JFrame implements KeyListener
 	public MainApplication()
 	{
 		super();
-		terminal = new AsciiPanel(120, 50);
+		terminal = new AsciiPanel(Refs.SCREEN_WIDTH, Refs.SCREEN_HEIGHT);
 		add(terminal);
 		pack();
 		if(debug)

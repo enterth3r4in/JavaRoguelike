@@ -2,19 +2,21 @@ package net.ccgames.rl.entity;
 
 import java.awt.Color;
 
+import net.ccgames.rl.refs.Refs;
+import net.ccgames.rl.world.World;
+
+/**
+ * Generic start for all entities
+ * @author Cody Miller
+ *
+ */
 public class Entity
 {
 	private int x, y;
 	private char glyph;
 	private Color color;
-	
-	/**
-	 * Default constructor
-	 */
-	public Entity()
-	{
-		
-	}
+	private String internalName;
+	private World world;
 	
 	/**
 	 * Constructor initialization of x,y,glyph
@@ -23,12 +25,14 @@ public class Entity
 	 * @param glyph - semi-permanent glyph of entity
 	 * @param color - color used to display the glyph
 	 */
-	public Entity(int initialX, int initialY, char glyph, Color color)
+	public Entity(int initialX, int initialY, char glyph, Color color, String internalName, World world)
 	{
 		this.x = initialX;
 		this.y = initialY;
 		this.glyph = glyph;
 		this.color = color;
+		this.internalName = internalName;
+		this.world = world;
 	}
 	
 	/**
@@ -39,6 +43,25 @@ public class Entity
 	{
 		int[] position = {x, y};
 		return position;
+	}
+	
+	/**
+	 * Allows entities to move (used in AI)
+	 * @param dx - delta X (change in distance x)
+	 * @param dy - delta Y (change in distance y)
+	 * @param world - Access to the world for tile checking
+	 */
+	public void move(int dx, int dy)
+	{
+		if(this.getEntityXPosition() + dx < 0 || this.getEntityXPosition() + dx > Refs.INIT_WORLD_WIDTH -1 ||
+				this.getEntityYPosition() + dy < 0 || this.getEntityYPosition() + dy > Refs.INIT_WORLD_HEIGHT -1)
+		{
+			System.out.println(this.getEntityInternalName() + " TRIED EXITING BOUNDS");
+		}else if(!(world.getTileAtCoordinates(x + dx, y + dy).blocks()))
+		{
+			this.x += dx;
+			this.y += dy;
+		}
 	}
 	
 	/**
@@ -68,8 +91,21 @@ public class Entity
 		return glyph;
 	}
 	
+	/**
+	 * Returns the color (r, g, b) of the entity
+	 * @return - r,g,b representing the color to display entity in
+	 */
 	public Color getEntityColor()
 	{
 		return color;
+	}
+	
+	/**
+	 * Returns the internal name declared, only for debugging use.
+	 * @return - String representing the internal name used for debugging
+	 */
+	public String getEntityInternalName()
+	{
+		return internalName;
 	}
 }

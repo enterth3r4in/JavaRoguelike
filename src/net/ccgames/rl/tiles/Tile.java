@@ -6,7 +6,7 @@ import net.ccgames.rl.refs.Colors;
 
 public class Tile
 {
-	private int x, y;
+//	private int x, y;
 	private char glyph;
 	private Color color;
 	private boolean doesBlock;

@@ -2,6 +2,7 @@ package net.ccgames.rl.entity;
 
 import net.ccgames.rl.refs.Colors;
 import net.ccgames.rl.refs.Refs;
+import net.ccgames.rl.world.World;
 
 public class EntityPlayer extends Entity
 {
@@ -14,8 +15,8 @@ public class EntityPlayer extends Entity
 	 * @param initialX
 	 * @param initialY
 	 */
-	public EntityPlayer(int initialX, int initialY)
+	public EntityPlayer(int initialX, int initialY, World world)	
 	{
-		super(initialX, initialY, Refs.PLAYER_GLYPH, Colors.PLAYER);
+		super(initialX, initialY, Refs.PLAYER_GLYPH, Colors.PLAYER, "PLAYER", world);
 	}
 }
