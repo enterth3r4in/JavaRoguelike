@@ -61,6 +61,12 @@ public class Entity
 		return position;
 	}
 	
+	public int[] getEntityDeltaPosition(int deltaX, int deltaY)
+	{
+		int[] position = {x + deltaX, y + deltaY};
+		return position;
+	}
+	
 	/**
 	 * Allows entities to move (used in AI)
 	 * @param dx - delta X (change in distance x)
@@ -71,23 +77,25 @@ public class Entity
 	{
 		Iterator<Entity> entityIterator = ScreenPlay.getEntitiesList().iterator();
 		
-		while(entityIterator.hasNext())
-			
 		if(this.getEntityXPosition() + dx < 0 || this.getEntityXPosition() + dx > Refs.INIT_WORLD_WIDTH -1 ||
-				this.getEntityYPosition() + dy < 0 || this.getEntityYPosition() + dy > Refs.INIT_WORLD_HEIGHT -1)
+				this.getEntityYPosition() + dy < 0 || this.getEntityYPosition() + dy > Refs.INIT_WORLD_HEIGHT -1 ||
+				(world.getTileAtCoordinates(x + dx, y + dy).blocks()))
 		{
-			System.out.println(this.getEntityInternalName() + " TRIED EXITING BOUNDS");
-		}else if(!(world.getTileAtCoordinates(x + dx, y + dy).blocks()))
-		{
-			
-			
+			System.out.println(this.getEntityInternalName() + " TRIED EXITING BOUNDS OR COLLIDED WITH BLOCKING TILE");
+		}
+		else
+		{	
+			while(entityIterator.hasNext())
 			{
-				if(!(entityIterator.next().getEntityPosition() == this.getEntityPosition()))
+				if(entityIterator.next().getEntityPosition() != this.getEntityDeltaPosition(dx, dy))
 				{
+					System.out.println("Player Final Pos: (" + (this.x + dx) + ", " + (this.y + dy) + ")");
+					System.out.println("Wolf Final Pos: (" + (entityIterator.next().getEntityXPosition()) + ", " + (entityIterator.next().getEntityYPosition()) + ")");
 					this.x += dx;
 					this.y += dy;
 					break;
-				}else
+				}
+				else
 				{
 					System.out.println(this.getEntityInternalName() + " COLLIDED WITH " + entityIterator.next().getEntityInternalName());
 				}

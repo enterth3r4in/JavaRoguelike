@@ -3,7 +3,6 @@ package net.ccgames.rl.factories;
 import java.util.Random;
 
 import net.ccgames.rl.ai.EntityAI;
-import net.ccgames.rl.ai.WolfAI;
 import net.ccgames.rl.entity.Entity;
 import net.ccgames.rl.entity.EntityWolf;
 import net.ccgames.rl.refs.Colors;

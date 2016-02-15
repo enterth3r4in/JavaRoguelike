@@ -36,12 +36,11 @@ public class ScreenPlay implements Screen
 	
 	public void generateAllEntities()
 	{
-		factory.spawnWolves(5);
+		factory.spawnWolves(1);
 	}
 	
 	public static void addEntityToList(Entity e)
 	{
-		System.out.println("Adding");
 		entities.add(e);
 	}
 	
@@ -83,10 +82,9 @@ public class ScreenPlay implements Screen
 	private void updateAndDisplayEntities(AsciiPanel terminal)
 	{
 		terminal.write(player.getEntityGlyph(), player.getEntityXPosition(), player.getEntityYPosition(), player.getEntityColor());
-		System.out.println(entities.size());
 		for(Entity e : entities)
 		{
-			e.updateAI();
+//			e.updateAI();
 			terminal.write(e.getEntityGlyph(), e.getEntityXPosition(), e.getEntityYPosition(), e.getEntityColor());
 		}
 	}
