@@ -45,6 +45,11 @@ public class ScreenPlay implements Screen
 		entities.add(e);
 	}
 	
+	public static List<Entity> getEntitiesList()
+	{
+		return entities;
+	}
+	
 	/**
 	 * Calls all other display methods and passes terminal reference
 	 */

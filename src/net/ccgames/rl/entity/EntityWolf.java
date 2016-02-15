@@ -17,7 +17,7 @@ public class EntityWolf extends Entity
 	 */
 	public EntityWolf(int initialX, int initialY, char glyph, Color color, String internalName, World world)
 	{
-		super(initialX, initialY, glyph, color, internalName, world);
+		super(initialX, initialY, glyph, color, true, internalName, world);
 	}
 
 }

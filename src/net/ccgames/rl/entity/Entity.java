@@ -1,9 +1,11 @@
 package net.ccgames.rl.entity;
 
 import java.awt.Color;
+import java.util.Iterator;
 
 import net.ccgames.rl.ai.EntityAI;
 import net.ccgames.rl.refs.Refs;
+import net.ccgames.rl.screen.ScreenPlay;
 import net.ccgames.rl.world.World;
 
 /**
@@ -16,6 +18,7 @@ public class Entity
 	private int x, y;
 	private char glyph;
 	private Color color;
+	private boolean doesBlock;
 	private String internalName;
 	private World world;
 	private EntityAI ai;
@@ -27,12 +30,13 @@ public class Entity
 	 * @param glyph - semi-permanent glyph of entity
 	 * @param color - color used to display the glyph
 	 */
-	public Entity(int initialX, int initialY, char glyph, Color color, String internalName, World world)
+	public Entity(int initialX, int initialY, char glyph, Color color, boolean doesBlock, String internalName, World world)
 	{
 		this.x = initialX;
 		this.y = initialY;
 		this.glyph = glyph;
 		this.color = color;
+		this.doesBlock = doesBlock;
 		this.internalName = internalName;
 		this.world = world;
 	}
@@ -65,14 +69,29 @@ public class Entity
 	 */
 	public void move(int dx, int dy)
 	{
+		Iterator<Entity> entityIterator = ScreenPlay.getEntitiesList().iterator();
+		
+		while(entityIterator.hasNext())
+			
 		if(this.getEntityXPosition() + dx < 0 || this.getEntityXPosition() + dx > Refs.INIT_WORLD_WIDTH -1 ||
 				this.getEntityYPosition() + dy < 0 || this.getEntityYPosition() + dy > Refs.INIT_WORLD_HEIGHT -1)
 		{
 			System.out.println(this.getEntityInternalName() + " TRIED EXITING BOUNDS");
 		}else if(!(world.getTileAtCoordinates(x + dx, y + dy).blocks()))
 		{
-			this.x += dx;
-			this.y += dy;
+			
+			
+			{
+				if(!(entityIterator.next().getEntityPosition() == this.getEntityPosition()))
+				{
+					this.x += dx;
+					this.y += dy;
+					break;
+				}else
+				{
+					System.out.println(this.getEntityInternalName() + " COLLIDED WITH " + entityIterator.next().getEntityInternalName());
+				}
+			}
 		}
 	}
 	
@@ -101,6 +120,15 @@ public class Entity
 	public char getEntityGlyph()
 	{
 		return glyph;
+	}
+	
+	/**
+	 * Returns boolean if of whether the entity should block that tile.
+	 * @return - boolean representing if entity blocks tile
+	 */
+	public boolean blocks()
+	{
+		return doesBlock;
 	}
 	
 	/**

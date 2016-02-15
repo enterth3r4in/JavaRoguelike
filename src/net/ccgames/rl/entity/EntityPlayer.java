@@ -17,6 +17,6 @@ public class EntityPlayer extends Entity
 	 */
 	public EntityPlayer(int initialX, int initialY, World world)	
 	{
-		super(initialX, initialY, Refs.PLAYER_GLYPH, Colors.PLAYER, "PLAYER", world);
+		super(initialX, initialY, Refs.PLAYER_GLYPH, Colors.PLAYER, true, "PLAYER", world);
 	}
 }
